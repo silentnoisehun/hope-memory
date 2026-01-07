@@ -1,16 +1,14 @@
 name: Publish to PyPI
 
 on:
-  release:
-    types: [published]
-  workflow_dispatch:  # Kézi indítás is
+  workflow_dispatch:  # Manual trigger
+  push:
+    tags:
+      - 'v*'  # Auto-publish on version tags (v0.1.0, v1.0.0, etc.)
 
 jobs:
-  publish:
+  build-and-publish:
     runs-on: ubuntu-latest
-    environment: release
-    permissions:
-      id-token: write  # Trusted publisher
 
     steps:
       - uses: actions/checkout@v4
@@ -21,11 +19,13 @@ jobs:
           python-version: '3.12'
 
       - name: Install build tools
-        run: pip install build
+        run: pip install build twine
 
       - name: Build package
         run: python -m build
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        # Trusted publisher - no token needed if configured on PyPI!
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: twine upload dist/*
