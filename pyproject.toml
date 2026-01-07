@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hope-memory"
+version = "0.1.0"
+description = "Human-like cognitive memory system for AI with 6-layer architecture and Silent Hope Protocol"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Hope + Máté Róbert + Steiner Szilvia", email = "stratosoi@gmail.com" }
+]
+keywords = [
+    "ai", "memory", "cognitive", "llm", "embeddings",
+    "chromadb", "vector-search", "protocol"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+vector = ["chromadb>=0.4.0"]
+shp = ["msgpack>=1.0.0"]
+full = ["chromadb>=0.4.0", "msgpack>=1.0.0"]
+dev = ["pytest", "pytest-asyncio"]
+
+[project.urls]
+Homepage = "https://github.com/anthropics/hope-memory"
+Documentation = "https://github.com/anthropics/hope-memory#readme"
+Repository = "https://github.com/anthropics/hope-memory.git"
+
+[tool.hatch.build.targets.wheel]
+packages = ["hope_memory"]
