@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "hope-memory"
-version = "0.1.0"
+version = "0.1.1"
 description = "Human-like cognitive memory system for AI with 6-layer architecture and Silent Hope Protocol"
 readme = "README.md"
 license = "MIT"
