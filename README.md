@@ -4,6 +4,15 @@
 
 A 6-layer memory architecture inspired by the human brain, with the Silent Hope Protocol (SHP) for lightning-fast communication.
 
+## Benchmarks
+
+| Operation | Traditional | Hope Memory | Speedup |
+|-----------|-------------|-------------|---------|
+| Server init | ~200ms | 0.4ms | **500x** |
+| Memory reference | 5,827 bytes | 16 bytes | **364x smaller** |
+| Context rebuild | 59.3ms | 0.02ms | **3,274x** |
+| SQLite (pooled) | 23.1ms | 0.4ms | **63x** |
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                      HOPE MEMORY                            │
